@@ -1,0 +1,11 @@
+function fe=beam_ele_load_linear(xi,q0,q2,L,x)
+le=x(2)-x(1);
+N1=(2-3*xi+xi^3)/4;
+N2=(1-xi-xi^2+xi^3)/4;
+N3=(2+3*xi-xi^3)/4;
+N4=(-1-xi+xi^2+xi^3)/4;
+N=[N1 le*N2/2 N3 N4*le/2];
+Nx=[(1-xi)/2 (1+xi)/2];
+xe=Nx*x';
+q=(q0-q2)*(1-xe/L)^2+q2;
+fe=N'*q*le/2;
